@@ -1,6 +1,5 @@
 # CubeSat 5-Stack Electronics Architecture 🚀
-
-
+![CubeSat Assembly](Cubesat_Pictures/Cubesat_pic.png)
 A modular **1U CubeSat electronic stack** developed for balloon-based communication and telemetry experiments.
 
 This project focuses on the design, development, integration, and validation of a complete CubeSat electronics platform consisting of five modular PCB subsystems, embedded firmware, ground station software, and 3D mechanical integration.
@@ -50,7 +49,7 @@ Available:
 
 # PCB Stack Assembly
 
-![PCB Stack](Cubesat_Pictures/FULLASSEMBLE.png)
+![PCB Stack](Cubesat_Pictures/Disassamble.png)
 
 The CubeSat electronics were implemented as five vertically stacked PCB modules.
 
