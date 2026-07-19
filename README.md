@@ -34,18 +34,7 @@ The electronics stack includes:
 - Si5351 WSPR beacon
 - GPS and sensor monitoring
 
-PCB design files:
 
-```
-Hardware_Design/
-```
-
-Available:
-- KiCad schematic files
-- PCB layout files
-- Project files
-
----
 
 # PCB Stack Assembly
 
@@ -67,34 +56,11 @@ Includes:
 - Structural frame design
 - Component placement visualization
 
-Files:
 
-```
-3D_Design/
-```
-
----
-
-# Firmware Development
-
-Firmware developed for:
-
-```
-Firmware/
-```
-
-Includes:
-
-- ESP32 onboard controller
-- ESP32-CAM SSTV payload
-- Arduino Nano WSPR beacon
-- Ground station dashboard
-
----
 
 # Ground Station
 
-![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard.png)
+![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard .png)
 
 A ground station dashboard was developed for real-time telemetry visualization.
 
@@ -108,25 +74,8 @@ Displayed parameters:
 
 ---
 
-# Testing and Validation
 
-The system was validated through rooftop ground testing.
 
-Validated communication modes:
-
-✅ LoRa telemetry  
-✅ APRS communication  
-✅ SSTV image transmission  
-✅ WSPR beacon decoding  
-
-Detailed test results:
-
-```
-Text_Images/
-Testing/
-```
-
----
 
 # Testing Video
 
@@ -140,15 +89,6 @@ Rooftop demonstration video showing:
 
 ---
 
-# Documentation
-
-Complete project report and schematic:
-
-```
-Documentation/
-```
-
----
 
 # Repository Structure
 
