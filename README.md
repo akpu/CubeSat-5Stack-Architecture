@@ -43,6 +43,9 @@ Main hardware components:
 
 # PCB Stack Assembly
 
+![PCB Stack](Cubesat_Pictures/FullSchematic.jpg)
+
+
 The CubeSat electronics were implemented as five vertically stacked PCB modules.
 
 PCB design files are available in:
