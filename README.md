@@ -63,17 +63,29 @@ Includes:
 ---
 ---
 
-<h2>Individual PCB Modules</h2>
+<h2>Individual PCB Stack Modules</h2>
 
 <p align="center">
-  <img src="Cubesat_Pictures/1Stack_PCB.png" width="220">
-  <img src="Cubesat_Pictures/2Stack_PCB.png" width="220">
-  <img src="Cubesat_Pictures/3Stack_PCB.png" width="220">
+<img src="Cubesat_Pictures/1Stack_PCB.png" width="220">
+<img src="Cubesat_Pictures/2Stack_PCB.png" width="220">
+<img src="Cubesat_Pictures/3Stack_PCB.png" width="220">
 </p>
 
 <p align="center">
-  <img src="Cubesat_Pictures/4Stack_PCB.png" width="220">
-  <img src="Cubesat_Pictures/5Stack_PCB.png" width="220">
+Communication Board &nbsp;&nbsp;&nbsp;
+Main OBC Board &nbsp;&nbsp;&nbsp;
+Secondary Controller Board
+</p>
+
+
+<p align="center">
+<img src="Cubesat_Pictures/4Stack_PCB.png" width="220">
+<img src="Cubesat_Pictures/5Stack_PCB.png" width="220">
+</p>
+
+<p align="center">
+Power Management Board &nbsp;&nbsp;&nbsp;
+Battery and Payload Board
 </p>
 
 # 3D Design
