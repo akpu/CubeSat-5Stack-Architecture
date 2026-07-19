@@ -57,7 +57,7 @@ Includes:
 - Component placement visualization
 
 
-
+---
 # Ground Station
 
 ![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard .png)
