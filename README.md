@@ -1,4 +1,4 @@
-# CubeSat 5-Stack Electronics Architecture 🚀
+# CubeSat 5-Stack Electronics Architecture 🛰️
 
 ![CubeSat Assembly](Cubesat_Pictures/CubesatBuilt.png)
 
