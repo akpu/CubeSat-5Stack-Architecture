@@ -60,11 +60,11 @@ Includes:
 
 # 3D Design
 
+![PCB Stack](Cubesat_Pictures/Disassamble.png)
+
 The complete CubeSat mechanical structure was designed using:
 
 - Fusion 360
-- 
-![PCB Stack](Cubesat_Pictures/Disassamble.png)
 
 Includes:
 
