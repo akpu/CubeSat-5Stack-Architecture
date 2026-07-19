@@ -61,7 +61,21 @@ Includes:
 - KiCad project files (`.kicad_pro`)
 
 ---
+---
 
+# Individual PCB Modules
+
+| Communication Board | Main OBC Board |
+|:-------------------:|:--------------:|
+| ![](Cubesat_Pictures/1Stack_PCB.png) | ![](Cubesat_Pictures/2Stack_PCB.png) |
+
+| Secondary Controller | Power Management |
+|:--------------------:|:----------------:|
+| ![](Cubesat_Pictures/3Stack_PCB.png) | ![](Cubesat_Pictures/4Stack_PCB.png) |
+
+| Battery & Payload Board |
+|:-----------------------:|
+| ![](Cubesat_Pictures/5Stack_PCB.png) |
 # 3D Design
 
 ![PCB Stack](Cubesat_Pictures/Disassamble.png)
