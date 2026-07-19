@@ -146,7 +146,7 @@ Rooftop demonstration video showing:
 - Communication testing
 - Ground station operation
 
-(Add video link here)
+((https://drive.google.com/file/d/1SzN-sQUl8R-h_qq5jK-UIxGzSsxhfScu/view?usp=drivesdk))
 
 ---
 
