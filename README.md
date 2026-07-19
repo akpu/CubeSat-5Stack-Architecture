@@ -42,7 +42,7 @@ Main hardware components:
 
 # PCB Stack Assembly
 
-![PCB Stack](Cubesat_Pictures/FULLASSEMBLE.png)
+![PCB Stack](Cubesat_Pictures/Disassamble.png)
 
 The CubeSat electronics were implemented as five vertically stacked PCB modules.
 
@@ -113,7 +113,7 @@ Features:
 
 # Ground Station
 
-![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard.png)
+![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard .png)
 
 The ground station receives and displays telemetry transmitted from the CubeSat system.
 
