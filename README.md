@@ -1,5 +1,7 @@
 # CubeSat 5-Stack Electronics Architecture 🚀
+
 ![CubeSat Assembly](Cubesat_Pictures/Cubesat_pic.png)
+
 A modular **1U CubeSat electronic stack** developed for balloon-based communication and telemetry experiments.
 
 This project focuses on the design, development, integration, and validation of a complete CubeSat electronics platform consisting of five modular PCB subsystems, embedded firmware, ground station software, and 3D mechanical integration.
@@ -22,31 +24,45 @@ The CubeSat architecture consists of five modular subsystems:
 
 # Hardware Implementation
 
-Designed using **KiCad** with custom PCB layouts.
+The electronics system was designed using **KiCad** with custom schematic and PCB layouts.
 
-The electronics stack includes:
+Main hardware components:
 
-- ESP32-WROOM-32 based OBC
+- ESP32-WROOM-32 based On-Board Computer
 - Arduino Nano secondary controller
-- LoRa SX1278 telemetry
-- SA868 VHF/UHF communication
-- ESP32-CAM SSTV payload
-- Si5351 WSPR beacon
-- GPS and sensor monitoring
+- LoRa SX1278 telemetry transceiver
+- SA868 VHF/UHF communication module
+- ESP32-CAM SSTV imaging payload
+- Si5351 WSPR beacon transmitter
+- Neo-6M GPS module
+- HW-290 IMU sensor
+- INA219 power monitoring sensor
 
-
+---
 
 # PCB Stack Assembly
 
-![PCB Stack](Cubesat_Pictures/Disassamble.png)
+![PCB Stack](Cubesat_Pictures/FULLASSEMBLE.png)
 
 The CubeSat electronics were implemented as five vertically stacked PCB modules.
+
+PCB design files are available in:
+
+```
+Hardware_Design/
+```
+
+Includes:
+
+- KiCad schematic files (`.kicad_sch`)
+- PCB layout files (`.kicad_pcb`)
+- KiCad project files (`.kicad_pro`)
 
 ---
 
 # 3D Design
 
-The complete mechanical structure was designed using:
+The complete CubeSat mechanical structure was designed using:
 
 - Fusion 360
 
@@ -55,27 +71,72 @@ Includes:
 - PCB stack integration
 - Structural frame design
 - Component placement visualization
+- Complete assembly model
 
+Files:
+
+```
+3D_Design/
+```
 
 ---
-# Ground Station
 
-![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard .png)
+# Firmware Development
 
-A ground station dashboard was developed for real-time telemetry visualization.
+Embedded firmware was developed for:
 
-Displayed parameters:
+```
+Firmware/
+```
 
-- GPS position
-- Altitude
-- Sensor data
+Includes:
+
+### CubeSat Onboard Firmware
+
+- ESP32 main controller code
+- ESP32-CAM SSTV payload code
+- Arduino Nano WSPR beacon code
+
+### Ground Station Software
+
+A web-based dashboard was developed for real-time telemetry visualization.
+
+Features:
+
+- GPS position monitoring
+- Altitude display
+- Sensor data visualization
 - Battery monitoring
 - Orientation information
 
 ---
 
+# Ground Station
 
+![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard.png)
 
+The ground station receives and displays telemetry transmitted from the CubeSat system.
+
+---
+
+# Testing and Validation
+
+The system was validated through rooftop ground-based experiments.
+
+Validated communication modes:
+
+✅ LoRa telemetry transmission  
+✅ APRS communication  
+✅ SSTV image transmission  
+✅ WSPR beacon decoding  
+
+Detailed test results and screenshots:
+
+```
+Text_Images/
+```
+
+---
 
 # Testing Video
 
@@ -89,6 +150,20 @@ Rooftop demonstration video showing:
 
 ---
 
+# Documentation
+
+Complete project documentation:
+
+```
+Documentation/
+```
+
+Includes:
+
+- Complete CubeSat Project Report
+- Complete System Schematic
+
+---
 
 # Repository Structure
 
@@ -102,7 +177,7 @@ CubeSat-5Stack-Architecture
 ├── Calculations
 ├── Cubesat_Pictures
 ├── Text_Images
-├── Texting_Vieo
+├── Testing_Video
 └── README.md
 ```
 
@@ -110,7 +185,7 @@ CubeSat-5Stack-Architecture
 
 # Project Team
 
-B.Tech Final Year Project  
+**B.Tech Final Year Project**  
 Department of Electronics and Communication Engineering  
 NSS College of Engineering, Palakkad
 
