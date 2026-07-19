@@ -63,15 +63,18 @@ Includes:
 ---
 ---
 
-## Individual PCB Modules
+<h2>Individual PCB Modules</h2>
 
-| Communication | Main OBC | Secondary Controller |
-|:-------------:|:--------:|:--------------------:|
-| ![](Cubesat_Pictures/1Stack_PCB.png) | ![](Cubesat_Pictures/2Stack_PCB.png) | ![](Cubesat_Pictures/3Stack_PCB.png) |
+<p align="center">
+  <img src="Cubesat_Pictures/1Stack_PCB.png" width="220">
+  <img src="Cubesat_Pictures/2Stack_PCB.png" width="220">
+  <img src="Cubesat_Pictures/3Stack_PCB.png" width="220">
+</p>
 
-| Power Management | Battery & Payload | |
-|:----------------:|:-----------------:|:--:|
-| ![](Cubesat_Pictures/4Stack_PCB.png) | ![](Cubesat_Pictures/5Stack_PCB.png) | |
+<p align="center">
+  <img src="Cubesat_Pictures/4Stack_PCB.png" width="220">
+  <img src="Cubesat_Pictures/5Stack_PCB.png" width="220">
+</p>
 
 # 3D Design
 
