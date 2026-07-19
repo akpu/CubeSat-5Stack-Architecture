@@ -113,7 +113,7 @@ Features:
 
 # Ground Station
 
-![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard .png)
+![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard%20.png)
 
 The ground station receives and displays telemetry transmitted from the CubeSat system.
 
