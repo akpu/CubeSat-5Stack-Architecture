@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛰 CubeSat Telemetry Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HEADER BAR -->
+    <div class="header-bar">
+      <h1>🛰 CUBESAT STATION</h1>
+      <div id="mqtt-status" class="mqtt-status">
+        <span class="status-dot"></span>
+        Connecting...
+      </div>
+    </div>
+
+    <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+      .mqtt-status {
+        padding: 10px 16px;
+        background: rgba(255, 107, 53, 0.2);
+        border: 2px solid #ff6b35;
+        border-radius: 8px;
+        color: #ff6b35;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background: #ff6b35;
+        border-radius: 50%;
+        animation: pulse 1s infinite;
+        flex-shrink: 0;
+      }
+      #mqtt-status.connected {
+        background: rgba(34, 197, 94, 0.2);
+        border-color: #22c55e;
+        color: #22c55e;
+      }
+      #mqtt-status.connected .status-dot {
+        background: #22c55e;
+        animation: none;
+      }
+    </style>
+
+    <!-- MAIN GRID: 3 equal columns -->
+    <div class="main-grid">
+
+      <!-- ═══════════════ COLUMN 1 ═══════════════ -->
+      <div class="col col-1">
+
+        <!-- ENVIRONMENT -->
+        <div class="card">
+          <h2>Environment</h2>
+          <div class="data-grid">
+            <div class="data-row">
+              <span class="data-label">Temperature</span>
+              <span class="data-value"><span id="temp">--</span><span class="data-unit">°C</span></span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">Pressure</span>
+              <span class="data-value"><span id="pressure">--</span><span class="data-unit">hPa</span></span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">Altitude</span>
+              <span class="data-value"><span id="altitude">--</span><span class="data-unit">m</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GPS -->
+        <div class="card">
+          <h2>GPS</h2>
+          <div class="data-grid">
+            <div class="data-row">
+              <span class="data-label">Latitude</span>
+              <span class="data-value"><span id="lat">--</span>°</span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">Longitude</span>
+              <span class="data-value"><span id="lng">--</span>°</span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">Altitude</span>
+              <span class="data-value"><span id="gpsAlt">--</span><span class="data-unit">m</span></span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">Speed</span>
+              <span class="data-value"><span id="speed">--</span><span class="data-unit">m/s</span></span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">Satellites</span>
+              <span class="data-value"><span id="sats">--</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="card map-card">
+          <h2>Position</h2>
+          <div id="map"></div>
+        </div>
+
+      </div>
+
+      <!-- ═══════════════ COLUMN 2 — CENTER ═══════════════ -->
+      <div class="col col-2">
+
+        <!-- ROLL / PITCH / YAW VALUES -->
+        <div class="orientation-values">
+          <div class="orientation-box">
+            <div class="label">ROLL</div>
+            <div class="value"><span id="roll-value">0.0</span>°</div>
+          </div>
+          <div class="orientation-box">
+            <div class="label">PITCH</div>
+            <div class="value"><span id="pitch-value">0.0</span>°</div>
+          </div>
+          <div class="orientation-box">
+            <div class="label">YAW</div>
+            <div class="value"><span id="yaw-value">0.0</span>°</div>
+          </div>
+        </div>
+
+        <!-- 3D CUBE -->
+        <div class="cube-card">
+          <div class="cube-section-label">ORIENTATION</div>
+          <div class="cube-container">
+            <div class="cube" id="cube">
+              <div class="cube-face front"><span>FRONT</span></div>
+              <div class="cube-face back"><span>BACK</span></div>
+              <div class="cube-face right"><span>RIGHT</span></div>
+              <div class="cube-face left"><span>LEFT</span></div>
+              <div class="cube-face top"><span>TOP</span></div>
+              <div class="cube-face bottom"><span>BOTTOM</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMPASS -->
+        <div class="card compass-card">
+          <h2>Heading</h2>
+          <div class="compass-layout">
+            <div class="compass">
+              <div class="needle" id="needle"></div>
+              <div class="compass-marker"></div>
+            </div>
+            <div class="yaw-display">
+              <span class="data-label">Yaw</span>
+              <span class="data-value"><span id="yaw2">--</span>°</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ═══════════════ COLUMN 3 ═══════════════ -->
+      <div class="col col-3">
+
+        <!-- COMBINED IMU CARD -->
+        <div class="card imu-card">
+          <h2>IMU Sensors</h2>
+
+          <div class="imu-section">
+            <div class="imu-section-title">⚡ Accelerometer</div>
+            <div class="imu-row-grid">
+              <div class="data-row">
+                <span class="data-label">X</span>
+                <span class="data-value"><span id="ax">--</span><span class="data-unit">m/s²</span></span>
+              </div>
+              <div class="data-row">
+                <span class="data-label">Y</span>
+                <span class="data-value"><span id="ay">--</span><span class="data-unit">m/s²</span></span>
+              </div>
+              <div class="data-row">
+                <span class="data-label">Z</span>
+                <span class="data-value"><span id="az">--</span><span class="data-unit">m/s²</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="imu-divider"></div>
+
+          <div class="imu-section">
+            <div class="imu-section-title">🔄 Gyroscope</div>
+            <div class="imu-row-grid">
+              <div class="data-row">
+                <span class="data-label">X</span>
+                <span class="data-value"><span id="gx">--</span><span class="data-unit">°/s</span></span>
+              </div>
+              <div class="data-row">
+                <span class="data-label">Y</span>
+                <span class="data-value"><span id="gy">--</span><span class="data-unit">°/s</span></span>
+              </div>
+              <div class="data-row">
+                <span class="data-label">Z</span>
+                <span class="data-value"><span id="gz">--</span><span class="data-unit">°/s</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="imu-divider"></div>
+
+          <div class="imu-section">
+            <div class="imu-section-title">🧲 Magnetometer</div>
+            <div class="imu-row-grid">
+              <div class="data-row">
+                <span class="data-label">X</span>
+                <span class="data-value"><span id="mx">--</span><span class="data-unit">µT</span></span>
+              </div>
+              <div class="data-row">
+                <span class="data-label">Y</span>
+                <span class="data-value"><span id="my">--</span><span class="data-unit">µT</span></span>
+              </div>
+              <div class="data-row">
+                <span class="data-label">Z</span>
+                <span class="data-value"><span id="mz">--</span><span class="data-unit">µT</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLAR PANELS -->
+        <div class="card power-card">
+          <h2>Solar Panels</h2>
+
+          <div class="power-display">
+            <div class="gauge-unit">
+              <div class="gauge-label">Panel Voltage</div>
+              <div class="voltage-display">
+                <span class="voltage-value" id="voltage">--</span>
+                <span class="voltage-unit">V</span>
+              </div>
+              <div class="voltage-bar">
+                <div class="voltage-bar-fill" id="voltage-bar"></div>
+              </div>
+              <div class="voltage-range">
+                <span>0V</span>
+                <span id="voltage-status">✓ OK</span>
+                <span>30V</span>
+              </div>
+            </div>
+
+            <div class="current-unit">
+              <div class="current-label">Panel Current</div>
+              <div class="current-display">
+                <span class="current-value" id="current">--</span>
+                <span class="current-unit-label">mA</span>
+              </div>
+              <div class="current-graph">
+                <div class="current-bar" id="current-bar"></div>
+              </div>
+              <div class="current-range">
+                <span>0 mA</span>
+                <span>2000 mA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="power-stats">
+            <div class="stat-item">
+              <span class="stat-label">Power Output</span>
+              <span class="stat-value" id="power">--<span class="stat-unit">W</span></span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Solar Status</span>
+              <span class="stat-value status-ok">Active</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
