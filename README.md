@@ -1,24 +1,9 @@
-# CubeSat 5-Stack Electronics Architecture 
+# CubeSat 5-Stack Electronics Architecture 🚀
 
-![CubeSat Full Assembly](Cubesat_Pictures/Full_CubeSat.png)
 
-A modular **1U CubeSat electronic system** developed for balloon-based communication, telemetry, imaging, and weak-signal beacon experiments.
+A modular **1U CubeSat electronic stack** developed for balloon-based communication and telemetry experiments.
 
-This project focuses on the **design, development, integration, and validation of a complete CubeSat electronics stack** consisting of five modular PCB subsystems, onboard firmware, ground station software, and 3D mechanical integration.
-
----
-
-# Project Overview
-
-The CubeSat electronics architecture follows a modular stacked PCB approach consisting of:
-
-1. Main On-Board Computer (OBC) Board  
-2. Communication Board  
-3. Secondary Controller Board  
-4. Power Management Board  
-5. Battery and Payload Board  
-
-The system integrates embedded processing, RF communication, telemetry acquisition, imaging payload, and beacon transmission capabilities.
+This project focuses on the design, development, integration, and validation of a complete CubeSat electronics platform consisting of five modular PCB subsystems, embedded firmware, ground station software, and 3D mechanical integration.
 
 ---
 
@@ -26,79 +11,29 @@ The system integrates embedded processing, RF communication, telemetry acquisiti
 
 ![System Architecture](Cubesat_Pictures/System_Architecture.png)
 
+The CubeSat architecture consists of five modular subsystems:
+
+1. Communication Board  
+2. Main On-Board Computer (OBC) Board  
+3. Secondary Controller Board  
+4. Power Management Board  
+5. Battery and Payload Board  
+
 ---
 
 # Hardware Implementation
 
-## Onboard Computing
+Designed using **KiCad** with custom PCB layouts.
 
-- **ESP32-WROOM-32**
-  - Main On-Board Computer
-  - Telemetry processing
-  - Sensor interfacing
-  - Communication control
+The electronics stack includes:
 
-- **Arduino Nano**
-  - Secondary controller
-  - WSPR beacon generation
-  - Communication assistance
-
----
-
-## Communication Subsystem
-
-### Telemetry
-
-- LoRa SX1278 (433 MHz)
-- Long-range low-power telemetry transmission
-
-### RF Communication
-
-- SA868 VHF/UHF Transceiver
-- APRS communication
-- SSTV image transmission
-
-### Beacon
-
-- Si5351 Frequency Synthesizer
-- WSPR weak-signal beacon system
-
----
-
-## Sensors and Monitoring
-
-- Neo-6M GPS Module
-- HW-290 (MPU6050 + QMC5883L + BMP180)
-- INA219 Voltage and Current Monitoring Sensor
-
-Measured parameters:
-
-- GPS coordinates
-- Altitude
-- Orientation
-- Temperature
-- Pressure
-- Battery voltage
-- Current consumption
-
----
-
-# PCB Design
-
-Designed using:
-
-- KiCad Schematic Capture
-- KiCad PCB Layout
-
-The electronics system consists of five custom-designed PCB modules:
-
-| Stack | Function |
-|---|---|
-| Stack 1 | Main OBC Board |
-| Stack 2 | Communication Board |
-| Stack 3 | Secondary Controller Board |
-| Stack 4 | Power Management Board |
-| Stack 5 | Battery and Payload Board |
+- ESP32-WROOM-32 based OBC
+- Arduino Nano secondary controller
+- LoRa SX1278 telemetry
+- SA868 VHF/UHF communication
+- ESP32-CAM SSTV payload
+- Si5351 WSPR beacon
+- GPS and sensor monitoring
 
 PCB design files:
 
@@ -106,28 +41,32 @@ PCB design files:
 Hardware_Design/
 ```
 
-Available files:
-
-- KiCad schematic (`.kicad_sch`)
-- KiCad PCB layout (`.kicad_pcb`)
-- KiCad project files (`.kicad_pro`)
+Available:
+- KiCad schematic files
+- PCB layout files
+- Project files
 
 ---
 
-# 3D Mechanical Design
+# PCB Stack Assembly
 
-![3D Model](Cubesat_Pictures/CubeSat_3D_Model.png)
+![PCB Stack](Cubesat_Pictures/FULLASSEMBLE.png)
 
-Mechanical design and integration were developed using:
+The CubeSat electronics were implemented as five vertically stacked PCB modules.
+
+---
+
+# 3D Design
+
+The complete mechanical structure was designed using:
 
 - Fusion 360
 
-Features:
+Includes:
 
-- CubeSat structural model
-- PCB stack arrangement
+- PCB stack integration
+- Structural frame design
 - Component placement visualization
-- Mechanical enclosure design
 
 Files:
 
@@ -139,7 +78,7 @@ Files:
 
 # Firmware Development
 
-Embedded software was developed for:
+Firmware developed for:
 
 ```
 Firmware/
@@ -147,95 +86,68 @@ Firmware/
 
 Includes:
 
-## CubeSat Onboard Firmware
-
-### ESP32
-
-- Telemetry acquisition
-- LoRa communication
-- Sensor interfacing
-- Payload control
-
-### ESP32-CAM
-
-- Image capture
-- SSTV image transmission
-
-### Arduino Nano
-
-- WSPR beacon generation
-- Secondary control functions
-
----
-
-## Ground Station Software
-
-The ground station receives and displays CubeSat telemetry data.
-
-Features:
-
-- GPS tracking
-- Altitude monitoring
-- Sensor visualization
-- Battery monitoring
-- Attitude data display
+- ESP32 onboard controller
+- ESP32-CAM SSTV payload
+- Arduino Nano WSPR beacon
+- Ground station dashboard
 
 ---
 
 # Ground Station
 
-![Ground Station](Cubesat_Pictures/Ground_Station.png)
+![Ground Station Dashboard](Text_Images/LoRa/LoRa_Groundsation_Dashboard.png)
 
-The ground station was developed to decode and visualize received telemetry from the CubeSat system.
+A ground station dashboard was developed for real-time telemetry visualization.
+
+Displayed parameters:
+
+- GPS position
+- Altitude
+- Sensor data
+- Battery monitoring
+- Orientation information
 
 ---
 
 # Testing and Validation
 
-The system was experimentally validated through rooftop ground testing.
+The system was validated through rooftop ground testing.
 
-## LoRa Telemetry
+Validated communication modes:
 
-- Sensor telemetry transmission
-- Real-time dashboard visualization
+✅ LoRa telemetry  
+✅ APRS communication  
+✅ SSTV image transmission  
+✅ WSPR beacon decoding  
 
-## APRS Communication
-
-- Packet transmission
-- RTL-SDR reception
-- SoundModem decoding
-
-## SSTV Imaging
-
-- ESP32-CAM image capture
-- SSTV encoding
-- MMSSTV decoding
-
-## WSPR Beacon
-
-- Si5351 beacon generation
-- WSJT-X decoding verification
-
-Testing results:
+Detailed test results:
 
 ```
+Text_Images/
 Testing/
 ```
 
 ---
 
+# Testing Video
+
+Rooftop demonstration video showing:
+
+- Integrated CubeSat hardware
+- Communication testing
+- Ground station operation
+
+(Add video link here)
+
+---
+
 # Documentation
 
-Complete project documentation:
+Complete project report and schematic:
 
 ```
 Documentation/
 ```
-
-Includes:
-
-- Project Report
-- Complete System Schematic
 
 ---
 
@@ -248,9 +160,10 @@ CubeSat-5Stack-Architecture
 ├── Hardware_Design
 ├── 3D_Design
 ├── Firmware
-├── Testing
 ├── Calculations
 ├── Cubesat_Pictures
+├── Text_Images
+├── Texting_Vieo
 └── README.md
 ```
 
@@ -258,8 +171,8 @@ CubeSat-5Stack-Architecture
 
 # Project Team
 
-Bachelor of Technology  
-Electronics and Communication Engineering  
+B.Tech Final Year Project  
+Department of Electronics and Communication Engineering  
 NSS College of Engineering, Palakkad
 
 Team Members:
@@ -273,4 +186,4 @@ Team Members:
 
 # Acknowledgement
 
-This project was developed as part of the B.Tech Final Year Project under the Department of Electronics and Communication Engineering, NSS College of Engineering, Palakkad.
+Developed as part of the B.Tech Final Year Project under the Department of Electronics and Communication Engineering, NSS College of Engineering, Palakkad.
