@@ -1,4 +1,4 @@
-# CubeSat 5-Stack Electronics Architecture 🛰️
+# Open-Source ESP32 CubeSat 5-Stack Electronics Architecture with LoRa, APRS, SSTV and WSPR Telemetry 🛰️
 
 
 ![CubeSat Assembly](Cubesat_Pictures/CubesatBuilt.png)
