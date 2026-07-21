@@ -110,7 +110,38 @@ Includes:
 - Structural frame design
 - Component placement visualization
 - Complete assembly model
+<h2>Individual PCB Stack Modules</h2>
 
+<table>
+<tr>
+<td align="center">
+<img src="Cubesat_Pictures/1Stack_3D .png" width="220"><br>
+<b>Communication Board</b>
+</td>
+
+<td align="center">
+<img src="Cubesat_Pictures/2Stack_3D.png" width="220"><br>
+<b>Main OBC Board</b>
+</td>
+
+<td align="center">
+<img src="Cubesat_Pictures/3Stack_3D.png" width="220"><br>
+<b>Secondary Controller Board</b>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<img src="Cubesat_Pictures/4Stack_3D.png" width="220"><br>
+<b>Power Management Board</b>
+</td>
+
+<td align="center">
+<img src="Cubesat_Pictures/5Stack_3D.png" width="220"><br>
+<b>Battery & Payload Board</b>
+</td>
+</tr>
+</table>
 Files:
 
 ```
