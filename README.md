@@ -175,7 +175,7 @@ Features:
 - GPS position monitoring
 - Altitude display
 - Sensor data visualization
-- Battery monitoring
+- Solar Charging & Battery monitoring
 - Orientation information
 
 ---
